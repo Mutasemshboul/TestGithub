@@ -19,8 +19,4 @@
     <ProjectReference Include="..\learn.core\learn.core.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="domain\" />
-  </ItemGroup>
-
 </Project>
