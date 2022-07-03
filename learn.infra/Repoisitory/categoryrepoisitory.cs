@@ -35,17 +35,30 @@ namespace learn.infra.Repoisitory
 
         public category_api getbyid(int id)
         {
-            throw new NotImplementedException();
+            var parameter = new DynamicParameters();
+            parameter.Add("idofcat", id, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            IEnumerable<category_api> result = dbcontext.dBConnection.Query<category_api>("categorey_package_api.getbyid", parameter, commandType: CommandType.StoredProcedure);
+            return result.FirstOrDefault();
+
         }
 
         public string insertcat(category_api category_Api)
         {
-            throw new NotImplementedException();
+            var parameter = new DynamicParameters();
+            parameter.Add("categoreyname", category_Api.catname, dbType: DbType.String, direction: ParameterDirection.Input);
+            parameter.Add("dateofcat", category_Api.catdate, dbType: DbType.DateTime, direction: ParameterDirection.Input);
+            var result = dbcontext.dBConnection.ExecuteAsync("categorey_package_api.insertcat", parameter, commandType: CommandType.StoredProcedure);
+            return "Valid";
         }
 
         public string updatecat(category_api category_Api)
         {
-            throw new NotImplementedException();
+            var parameter = new DynamicParameters();
+            parameter.Add("categoreyname", category_Api.catname, dbType: DbType.String, direction: ParameterDirection.Input);
+            parameter.Add("dateofcat", category_Api.catdate, dbType: DbType.DateTime, direction: ParameterDirection.Input);
+            parameter.Add("idofcat", category_Api.id, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            var result = dbcontext.dBConnection.ExecuteAsync("categorey_package_api.updatecat", parameter, commandType: CommandType.StoredProcedure);
+            return "Valid";
         }
     }
 }
