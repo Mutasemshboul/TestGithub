@@ -9,6 +9,9 @@ namespace learn.core.Repoisitory
     {
         public List<course> GetAllCourse();
         public bool insertcourse(course course);
+        public bool updateCourse(course course);
         public bool deleteCourse(int? id);
+        public course getbyid(int id);
     }
 }
+ 
