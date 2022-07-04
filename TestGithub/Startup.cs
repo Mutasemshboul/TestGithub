@@ -1,3 +1,9 @@
+using learn.core.domain;
+using learn.core.Repoisitory;
+using learn.core.service;
+using learn.infra.domain;
+using learn.infra.Repoisitory;
+using learn.infra.service;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -25,6 +31,11 @@ namespace TestGithub
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<IDBContext, DbContext>();
+            services.AddScoped<Icategoryrepoisitorycs, categoryrepoisitory>();
+            services.AddScoped<Icourse_apirepoisitory, course_apirepoisitory>();
+            services.AddScoped<Icategoryservice, categoryservice>();
+            services.AddScoped<Icourseservice, courserservice>();
             services.AddControllers();
         }
 

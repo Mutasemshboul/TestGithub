@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using Dapper;
 using learn.core.Data;
+using learn.core.domain;
 using learn.core.Repoisitory;
 using learn.infra.domain;
 
@@ -12,9 +13,9 @@ namespace learn.infra.Repoisitory
 {
     public class course_apirepoisitory : Icourse_apirepoisitory
     {
-        private readonly DbContext dbContext;
+        private readonly IDBContext dbContext;
 
-        public course_apirepoisitory(DbContext dbContext)
+        public course_apirepoisitory(IDBContext dbContext)
         {
             this.dbContext = dbContext;
         }

@@ -13,7 +13,7 @@ namespace learn.infra.domain
         private DbConnection connection;
         private IConfiguration configuration;
 
-        public DbContext(DbConnection connection, IConfiguration configuration)
+        public DbContext( IConfiguration configuration)
         {
             this.configuration = configuration;
         }

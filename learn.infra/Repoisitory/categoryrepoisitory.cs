@@ -1,5 +1,6 @@
 ﻿using Dapper;
 using learn.core.Data;
+using learn.core.domain;
 using learn.core.Repoisitory;
 using System;
 using System.Collections.Generic;
@@ -9,11 +10,11 @@ using System.Text;
 
 namespace learn.infra.Repoisitory
 {
-    internal class categoryrepoisitory : Icategoryrepoisitorycs
+    public class categoryrepoisitory : Icategoryrepoisitorycs
     {
-        private readonly Dbcontext dbcontext;
+        private readonly IDBContext dbcontext;
 
-        public categoryrepoisitory(Dbcontext dbcontext)
+        public categoryrepoisitory(IDBContext dbcontext)
         {
             this.dbcontext = dbcontext;
         }
