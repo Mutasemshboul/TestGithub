@@ -110,10 +110,16 @@ namespace TestGithub.Controllers
             return Empservice.filtername(F_name);
         }
 
-        [HttpGet("{id}")]
-        public employee_api DeptBydid(int id)
+        [HttpGet("email/{id}")]
+        public bool DeptBydid(int id)
         {
-            return Empservice.getbyid(id);
+
+            string n =  Empservice.getbyid(id).email;
+            if(n != null)
+            {
+                return true;
+            }
+            return false;
         }
         [HttpGet("emptask")]
 
