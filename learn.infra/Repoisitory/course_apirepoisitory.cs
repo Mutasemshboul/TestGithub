@@ -22,7 +22,7 @@ namespace learn.infra.Repoisitory
         public bool deleteCourse(int? id)
         {
             var parameter = new DynamicParameters();
-            parameter.Add("CourseId", id, dbType: System.Data.DbType.Int32, direction:ParameterDirection.Input);
+            parameter.Add("CourseId", id, dbType: DbType.Int32, direction:ParameterDirection.Input);
             var result = dbContext.dBConnection.ExecuteAsync("Course_Package.deleteCourse", parameter, commandType: CommandType.StoredProcedure);
             if (result == null)
             {
@@ -44,7 +44,7 @@ namespace learn.infra.Repoisitory
         public course getbyid(int id)
         {
             var parameter = new DynamicParameters();
-            parameter.Add("idofcourse", id, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            parameter.Add("courseId", id, dbType: DbType.Int32, direction: ParameterDirection.Input);
             //select * from course_api where id=idofcourse;
 
             IEnumerable<course> result = dbContext.dBConnection.Query<course>("Course_Package.getbyid", parameter, commandType: CommandType.StoredProcedure);
@@ -61,11 +61,12 @@ namespace learn.infra.Repoisitory
             parameter.Add("Price", course.price, dbType: DbType.Int32, direction: ParameterDirection.Input);
             parameter.Add("StartDate", course.startdate, dbType: DbType.DateTime, direction: ParameterDirection.Input);
             parameter.Add("EndDate", course.enddate, dbType: DbType.DateTime, direction: ParameterDirection.Input);
+            parameter.Add("ImageName", course.imagename, dbType: DbType.String, direction: ParameterDirection.Input);
 
 
 
 
-            var result = dbContext.dBConnection.ExecuteAsync("Course_Package.insertcourse", parameter, commandType: CommandType.StoredProcedure);
+            var result = dbContext.dBConnection.Execute("Course_Package.insertcourse", parameter, commandType: CommandType.StoredProcedure);
 
 
 
@@ -80,11 +81,13 @@ namespace learn.infra.Repoisitory
             parameter.Add("Price", course.price, dbType: DbType.Int32, direction: ParameterDirection.Input);
             parameter.Add("StartDate", course.startdate, dbType: DbType.DateTime, direction: ParameterDirection.Input);
             parameter.Add("EndDate", course.enddate, dbType: DbType.DateTime, direction: ParameterDirection.Input);
+            parameter.Add("ImageName", course.imagename, dbType: DbType.String, direction: ParameterDirection.Input);
 
 
 
 
-            var result = dbContext.dBConnection.ExecuteAsync("Course_Package.updateCourse", parameter, commandType: CommandType.StoredProcedure);
+
+            var result = dbContext.dBConnection.Execute("Course_Package.updateCourse", parameter, commandType: CommandType.StoredProcedure);
 
 
 

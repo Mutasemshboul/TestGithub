@@ -34,8 +34,37 @@ namespace TestGithub
             services.AddScoped<IDBContext, DbContext>();
             services.AddScoped<Icategoryrepoisitorycs, categoryrepoisitory>();
             services.AddScoped<Icourse_apirepoisitory, course_apirepoisitory>();
+
             services.AddScoped<Icategoryservice, categoryservice>();
             services.AddScoped<Icourseservice, courserservice>();
+
+            services.AddScoped<Icourse_api_reposisitory, courseApi_repoisitory>();
+            services.AddScoped<Icourse_api_service,courseApiservice>();
+
+            services.AddScoped<IstudentRepo, studentrRepo>();
+            services.AddScoped<Istudentservice, studentservice>();
+
+            services.AddScoped<Iemp_apirepositiory, emp_apirepoisitory>();
+            services.AddScoped<Iemp_service, emp_api_service>();
+
+            services.AddScoped<Idepartment_apirepo, department_repo>();
+            services.AddScoped<Idepartment_service, departmentservice>();
+            
+            services.AddScoped<Iemployee_apirepo, employee_repo>();
+            services.AddScoped<Iempolyee_sevice, employeeservice>();
+
+            services.AddScoped<Itask_apirepo, task_repo>();
+            services.AddScoped<Itask_service, taskservice>();
+            
+            services.AddScoped<Ienrollmenttask_apirepo, enrollmenttask_repo>();
+            services.AddScoped<Ienrollmenttask_service, enrollmaenttaskservice>();
+
+            services.AddScoped<Idate_apirepo, date_repo>();
+            services.AddScoped<Idateservice, dateservice>();
+
+
+
+
             services.AddControllers();
         }
 

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace learn.infra
 {
-    internal class Class2:Interface1
+    internal class Class2
     {
     }
 }

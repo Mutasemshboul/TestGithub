@@ -4,6 +4,7 @@ using learn.infra.service;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace TestGithub.Controllers
 {
@@ -17,7 +18,7 @@ namespace TestGithub.Controllers
             this.coursesrevices = coursesrevices;   
 
         }
-        [HttpDelete]
+        [HttpDelete("delete/{id}")]
         public bool deletecourse(int id)
         {
             return coursesrevices.deleteCourse(id);
@@ -28,8 +29,8 @@ namespace TestGithub.Controllers
             return coursesrevices.GetAllCourse();
         }
 
-        [HttpGet("/(id)")]
-        public course course([FromBody] int id)
+        [HttpGet("{id}")]
+        public course course( int id)
         {
             return coursesrevices.getbyid(id);
         }
@@ -45,6 +46,44 @@ namespace TestGithub.Controllers
 
             return coursesrevices.updateCourse(cc);
         }
+        [HttpGet("count")]
+        public int countcourse()
+        {
+            return coursesrevices.GetAllCourse().Count();
+        }
+        [HttpGet("sum")]
+        public int sumcourse()
+        {
+            int sum = 0;
+            foreach(var item in coursesrevices.GetAllCourse())
+            {
+                sum += (int)item.price;
+            }
+            return sum;
+        }
+        [HttpGet("last3rec")]
+        public List<course> last3rec()
+        {
+            List<course> l = new List<course>();
+            int j = coursesrevices.GetAllCourse().Count() - 1;
+            for (int i = j; i > j-3; i--)
+            {
+                l.Add(coursesrevices.GetAllCourse()[i]);
+            }
+            return l;
+        }
+        [HttpGet("ordererd")]
+        public List<course> coursedes()
+        {
+            List<course> l = new List<course>();
+            int j = coursesrevices.GetAllCourse().Count() - 1;
+            for (int i = j; i > 0 ; i--)
+            {
+                l.Add(coursesrevices.GetAllCourse()[i]);
+            }
+            return l;
+        }
+
 
     }
 }
