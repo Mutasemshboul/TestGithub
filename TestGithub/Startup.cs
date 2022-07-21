@@ -65,8 +65,12 @@ namespace TestGithub
             services.AddScoped<Idate_apirepo, date_repo>();
             services.AddScoped<Idateservice, dateservice>();
 
+             services.AddScoped<Iempemailrepo, empeamilrepo>();
+            services.AddScoped<Iempemailservice, empemailservice>();
+
             services.AddScoped<IAuthentication, authentication>();
             services.AddScoped<IAuthenticationservice, authenticationservice>();
+            services.AddScoped<Iemailservice, emailclass>();
 
             services.AddAuthentication(x =>
             {
